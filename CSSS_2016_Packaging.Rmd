@@ -139,22 +139,20 @@ knitr::opts_chunk$set(echo = FALSE)
 <i class="fa fa-briefcase   fa-1.7x"></i> Case Studies of Compendia
 </div></span>
 
+
 ## {.flexbox .vcenter #myImagePage800x400}
 
 ![](figures/pubs.png)
 
-## {.flexbox .vcenter #myImagePage9}
+##  {.bigger40}
 
-[![](figures/simple_pkg.png)](https://github.com/cylerc/AP_SC)
-
-## {.flexbox .vcenter #myImagePage9}
-
-[![](figures/mjb_pkg.png)](https://github.com/benmarwick/1989-excavation-report-Madjebebe)
-<!-- https://dx.doi.org/10.6084/m9.figshare.1297059.v2 -->
-
-## {.flexbox .vcenter #myImagePage9}
-
-[![](figures/ktc11.png)](https://github.com/benmarwick/ktc11)
+<div><span style="font-size:2em; line-height:1.5em">
+<i class="fa fa-briefcase fa-1.5x"></i> [Small](https://github.com/cylerc/AP_SC)  
+<i class="fa fa-briefcase fa-1.5x"></i> [Medium](https://github.com/benmarwick/1989-excavation-report-Madjebebe)    
+<i class="fa fa-briefcase fa-1.5x"></i> [Large](https://github.com/benmarwick/ktc11)     
+    
+ 
+</div></span>
 
 ## Research compendium ++
 
