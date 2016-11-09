@@ -208,9 +208,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Summary {.bigger35}
 
-- Open methods and materials, scripted workflow, version control and environment control are generic principles suitable for most fields of research
-- The specific details will change over time, but the principles will endure
-- For most people, the technical problems already have good solutions, the remaining challenge is cultural
+<i class="fa fa-chevron-circle-right fa-1.5x"></i> Open methods and materials, scripted workflow, version control and environment control are generic principles suitable for most fields of research 
+
+<i class="fa fa-chevron-circle-right fa-1.5x"></i> The specific details will change over time, but the principles will endure    
+
+<i class="fa fa-chevron-circle-right fa-1.5x"></i> For most people, the technical problems already have good solutions, the remaining challenge is cultural    
+
 
 
 ## Colophon
