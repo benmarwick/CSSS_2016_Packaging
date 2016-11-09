@@ -1,0 +1,232 @@
+---
+title: "Packaging data analytical work reproducibly using R (and friends)" 
+author: "Ben Marwick"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  ioslides_presentation
+css: my_css.css
+---
+
+<!-- 
+
+It will be at 12:30 - 1:30 on Wednesday, November 9th, 2016, in Savery Hall Room 409
+
+Here's the title and abstract:
+
+Packaging data analytical work reproducibly using R (and friends)
+
+Long considered an axiom of science, the reproducibility of scientific research has recently come under scrutiny after some highly-publicized failures to reproduce results. This has often been linked to the failure of the current model of journal publishing to provide enough details for reviewers to adequately assess the correctness of papers submitted for publication. One early proposal for ameliorating this situation is to bundle the different files that make up a research result into a 'compendium'. At the time it was originally proposed, creating a compendium was a complex process. In this talk I show how modern software tools and services have substantially lightened the burden of making compendia. I describe current approaches to making these compendia to accompany journal articles. Several recent projects of varying sizes are briefly presented to show how my colleagues and I are using R and related tools (e.g. version control, continuous integration, containers, repositories) to make compendia for our publications. I explain how these approaches, which we believe to be widely applicable to many types of research work, subvert the constraints of the typical journal article, and improve the efficiency and reproducibility of our research.
+
+Here's the webpage for the seminar: https://www.csss.washington.edu/seminars/547
+
+Hope to see you there! If you can't make it, you might like to read my recent paper at http://dx.doi.org/10.1007/s10816-015-9272-9 which the seminar is based on.
+
+-->
+
+<HEAD><link rel="stylesheet" href="figures/font-awesome-4.6.3/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="figures/academicons-1.6.0/css/academicons.css" />
+
+</HEAD>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview {.bigger40}
+
+<div><span style="font-size:1.5em; line-height:1.6em">
+<i class="fa fa-question-circle  fa-1.7x"></i> Motivation    
+<i class="fa fa-university   fa-1.7x"></i> Four general principles    
+<i class="fa fa-briefcase  fa-1.7x"></i> Case studies    
+<i class="fa fa-balance-scale  fa-1.7x"></i> Costs and benefits     
+</div></span>
+
+##  {.mySegue}
+
+<div><span style="font-size:0.7em; line-height:1.3em">
+<i class="fa fa-question-circle   fa-1.7x"></i> Motivation
+</div></span>
+
+## {.flexbox .vcenter #myImagePage1}
+
+![](figures/hey.png)
+<!-- from Tony Hey presentation on 'Open Science Decoded' -->
+
+## {.flexbox .vcenter #myImagePage1}
+
+[![](figures/popular.png)](https://medium.com/@benmarwick/how-computers-broke-science-and-what-we-can-do-to-fix-it-5d413559ca03#.pjits81yh)
+
+## Key ideas {.bigger40}
+
+<div><span style="font-size:1.1em; line-height:1.5em">
+<i class="fa fa-lightbulb-o  fa-1.5x"></i> Reproducibilty is necessary for scientific progress        
+<i class="fa fa-lightbulb-o  fa-1.5x"></i> Computers wrangle all the data, but also obscure it       
+<i class="fa fa-lightbulb-o  fa-1.5x"></i> Especially point-and-click actions    
+<i class="fa fa-lightbulb-o  fa-1.5x"></i> Technical solutions available in open source/format/data/access   
+</div></span>
+
+## {.flexbox .vcenter #myImagePage2}
+
+[![](figures/jamt.png)](http://link.springer.com/article/10.1007/s10816-015-9272-9)
+
+##  {.mySegueSmall}
+
+<div><span style="font-size:0.7em; line-height:1.3em">
+<i class="fa fa-university   fa-1.7x"></i> Four general principles of reproducible research that have emerged in other fields
+</div></span>
+
+
+## {.bigger40}
+
+<font color="green">✓</font> Make openly available the data and methods that generated the published result
+
+<font color="green">✓</font> Write scripts to conduct analyses
+
+<font color="green">✓</font> Use version control to track changes 
+
+<font color="green">✓</font> Describe and archive the computational environment
+
+## First principle  {.bigger55}
+
+<i class="ai ai-figshare ai-1.5x"></i> All files on figshare, or university data repo, or OSF
+
+<img src="figures/csv.png" alt="" style="width: 50px;"/> Data in CSV format
+
+<i class="fa fa-folder-open-o fa-1.5x"></i> Organised as an R package
+
+
+## Second principle  {.bigger40}
+
+<img src="figures/rmd.png" alt="" style="width: 30px;"/> R & Rmarkdown documents
+
+<img src="figures/kjh.png" alt="" style="width: 600px;"/>
+<!-- https://kieranhealy.org/files/papers/plain-person-text.pdf http://plain-text.co/ -->
+
+## {.flexbox .vcenter #myImagePage1}
+
+[![](figures/rmd_ex.png)](https://github.com/benmarwick/1989-excavation-report-Madjebebe/blob/master/vignettes/analysis-of-dates-lithics-shell-from-1989-excavations.Rmd)
+
+## Third principle  {.bigger40}
+
+<i class="fa fa-github fa-1.5x"></i> All files tracked with Git, hosted on GitHub
+<!-- https://github.com/benmarwick/1989-excavation-report-Madjebebe -->
+
+<i class="fa fa-user fa-1.5x"></i> Collaboration occurred via GitHub's 'flow'
+
+## {.flexbox .vcenter #myImagePage500x600}
+
+[![](figures/flow.png)](https://github.com/benmarwick/ktc11/pulls?q=is%3Apr+is%3Aclosed)
+
+## Fourth principle  {.bigger40}
+
+<img src="figures/docker.png" alt="" style="width: 40px;"/> Docker image and Dockerfile to contain RStudio, packages, code and external dependencies 
+<!-- https://hub.docker.com/r/benmarwick/mjb1989excavationpaper/ -->
+
+<img src="figures/rocker.png" alt="" style="width: 40px;"/> Based on Rocker image and templates
+<!-- https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image -->
+
+## Continuous integration is very helpful
+
+<div><span style="font-size:3em; line-height:1.5em">
+<img src="figures/travis.png" alt="" style="width: 40px;"/> .travis.yml    
+<img src="figures/circle.png" alt="" style="width: 40px;"/> circle.yml     
+</div></span>
+
+##  {.mySegueSmall}
+
+<div><span style="font-size:0.7em; line-height:1.3em">
+<i class="fa fa-briefcase   fa-1.7x"></i> Case Studies of Compendia
+</div></span>
+
+## {.flexbox .vcenter #myImagePage800x400}
+
+![](figures/pubs.png)
+
+## {.flexbox .vcenter #myImagePage9}
+
+[![](figures/simple_pkg.png)](https://github.com/cylerc/AP_SC)
+
+## {.flexbox .vcenter #myImagePage9}
+
+[![](figures/mjb_pkg.png)](https://github.com/benmarwick/1989-excavation-report-Madjebebe)
+<!-- https://dx.doi.org/10.6084/m9.figshare.1297059.v2 -->
+
+## {.flexbox .vcenter #myImagePage9}
+
+[![](figures/ktc11.png)](https://github.com/benmarwick/ktc11)
+
+## Research compendium ++
+
+<div><span style="font-size:2em; line-height:1.5em">
+<i class="fa fa-file-text-o fa-1.5x"></i> README.md    
+<i class="fa fa-folder-open fa-1.5x"></i> R package & manuscript    
+<i class="fa fa-folder-open fa-1.5x"></i> VCS repository     
+<i class="fa fa-file-code-o fa-1.5x"></i> code CI     
+<i class="fa fa-file-code-o fa-1.5x"></i> environment CI      
+ 
+</div></span>
+
+##  {.mySegue}
+
+<div><span style="font-size:0.7em; line-height:1.3em">
+<i class="fa fa-balance-scale  fa-1.7x"></i> Costs & benefits
+</div></span>
+
+## Costs  {.bigger45 .build}
+
+<i class="fa fa-clock-o  fa-1.5x"></i> Time learning the tools 
+
+<i class="fa fa-calendar  fa-1.5x"></i> Time doing new things  
+
+<i class="fa fa-wrench  fa-1.5x"></i> Built-in vs Bolt-on
+
+
+## Benefits {.bigger40 .build}
+
+<i class="fa fa-graduation-cap fa-1.5x"></i> Comfort of knowing that I am right & have no secrets
+
+<i class="fa fa-clock-o  fa-1.5x"></i> Save time by reusing my previous code
+
+<i class="fa fa-line-chart fa-1.5x"></i> Open data confers citation advantages, but magnitude is highly variable
+
+<i class="fa fa-users fa-1.5x"></i> Open Source community membership provides access to high-quality help
+
+## Two implications: Training {.bigger40}
+
+<img src="figures/pi.png" alt="" style="width: 800px;"/>
+
+## Two implications: Incentives {.bigger40}
+
+<img src="figures/open_data_all.png" alt="" style="width: 500px;"/>
+
+<img src="figures/open_materials_all.png" alt="" style="width: 500px;"/>
+
+<!-- http://www.nature.com/news/digital-badges-motivate-scientists-to-share-data-1.19907 --> 
+
+<!-- https://osf.io/tvyxz/ -->
+
+## Summary {.bigger35}
+
+- Open methods and materials, scripted workflow, version control and environment control are generic principles suitable for most fields of research
+- The specific details will change over time, but the principles will endure
+- For most people, the technical problems already have good solutions, the remaining challenge is cultural
+
+
+## Colophon
+
+Presentation written in [R Markdown using ioslides](http://rmarkdown.rstudio.com/ioslides_presentation_format.html)
+
+Compiled into HTML5 using [RStudio](http://www.rstudio.com/ide/) & [knitr](http://yihui.name/knitr)
+
+Source code hosting:
+https://github.com/benmarwick/
+
+ORCID: http://orcid.org/0000-0001-7879-4531
+
+Licensing: 
+
+* Presentation: [CC-BY-3.0](http://creativecommons.org/licenses/by/3.0/us/)
+
+* Source code: [MIT](http://opensource.org/licenses/MIT) 
+
