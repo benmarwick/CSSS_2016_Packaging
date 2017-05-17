@@ -100,7 +100,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <img src="figures/rmd.png" alt="" style="width: 30px;"/> R & Rmarkdown documents
 
-<img src="figures/kjh.png" alt="" style="width: 600px;"/>
+<a href="http://plain-text.co/"><img src="figures/kjh.png" alt="" style="width: 600px;"/></a>
 <!-- https://kieranhealy.org/files/papers/plain-person-text.pdf http://plain-text.co/ -->
 
 ## {.flexbox .vcenter #myImagePage1}
@@ -147,9 +147,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ##  {.bigger40}
 
 <div><span style="font-size:2em; line-height:1.5em">
-<i class="fa fa-briefcase fa-1.5x"></i> [Small](https://github.com/cylerc/AP_SC)  
-<i class="fa fa-briefcase fa-1.5x"></i> [Medium](https://github.com/benmarwick/1989-excavation-report-Madjebebe)    
-<i class="fa fa-briefcase fa-1.5x"></i> [Large](https://github.com/benmarwick/ktc11)     
+<i class="fa fa-briefcase fa-0.5x"></i> Small ([1](https://github.com/cylerc/AP_SC))  
+<i class="fa fa-briefcase fa-1.5x"></i> Medium ([1](https://github.com/benmarwick/mjbtramp))    
+<i class="fa fa-briefcase fa-2.0x"></i> Large ([1](https://github.com/benmarwick/1989-excavation-report-Madjebebe), [2](https://github.com/benmarwick/ktc11), [3](https://github.com/benmarwick/Pleistocene-aged-stone-artefacts-from-Jerimalai--East-Timor))     
     
  
 </div></span>
@@ -196,7 +196,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Two implications: Incentives {.bigger40}
 
-<img src="figures/open_data_all.png" alt="" style="width: 500px;"/>
+<a href="'https://osf.io/tvyxz/"><img src="figures/open_data_all.png" alt="" style="width: 500px;"/></a>
 
 <img src="figures/open_materials_all.png" alt="" style="width: 500px;"/>
 
